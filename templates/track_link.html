@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Short URL App</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <h2>Shortened URLs</h2>
+    <table>
+        <tr>
+            <th>Full URL</th>
+            <th>Shorten URL</th>
+            <th>Open Time</th>
+            <th>Created At</th>
+        </tr>
+        {% for link in total_link %}
+            <tr>
+                <td><a href="{{ link.url }}">{{ link.url }}</a></td>
+<!--                <td><a href="{{ link.url }}">{{ request.host }}/{{ link.hash_id }}</a></td>-->
+                <td><a href="{{ url_for('redirect_to_original', hash_id=link.hash_id) }}">{{ request.host }}/{{ link.hash_id }}</a></td>
+                <td>{{ link.views }}</td>
+                <td>{{ link.created_at }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+<!--    <a href="{{ url_for('index_endpoint')}}">Index page</a>-->
+    <a href="{{ url_for('index_endpoint') }}"><button>Come back</button></a>
+</body>
+</html>

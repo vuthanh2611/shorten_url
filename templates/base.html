@@ -1,0 +1,13 @@
+<html>
+    <head>
+        <title>{% block title %}Flask app{% endblock %}</title>
+    </head>
+    <body>
+    {% block content %} {% endblock %}
+    <ul>
+    </ul>
+        {% for message in get_flashed_messages() %}
+            <p> {{message}}</p>
+        {% endfor %}
+    </body>
+</html>
