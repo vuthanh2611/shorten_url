@@ -8,10 +8,11 @@
     <form action="/" method="post">
         <input type=text" name="link">
         <input type="submit" value="Create link">
+        <a href="{{url_for('track_link_endpoint')}}">Redirect</a>
         <input type="submit" value="Redirect" formaction="{{url_for('track_link_endpoint')}}">
     </form>
     {% if shorten_link %}
-     <p>Your shorten link is: <a href="{{ url_for('redirect_to_original', hash_id=shorten_link.hash_id) }}">{{ request.host }}/{{ shorten_link.hash_id }}</a></p>
+     <p>Your shorten link is: <a href="{{ url_for('redirect_to_original', hash_id=shorten_link.hash_id, _external=True) }}">={{ shorten_link.hash_id }}</a></p>
 <!--    <p>Your shorten link is: <a href="{{ shorten_link.url }}">{{ request.host }}/{{ shorten_link.hash_id }}</a>-->
     {% endif %}
     </body>

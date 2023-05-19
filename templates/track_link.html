@@ -29,7 +29,7 @@
             <tr>
                 <td><a href="{{ link.url }}">{{ link.url }}</a></td>
 <!--                <td><a href="{{ link.url }}">{{ request.host }}/{{ link.hash_id }}</a></td>-->
-                <td><a href="{{ url_for('redirect_to_original', hash_id=link.hash_id) }}">{{ request.host }}/{{ link.hash_id }}</a></td>
+                <td><a href="{{ url_for('redirect_to_original', hash_id=link.hash_id, _external=True) }}">{{ link.hash_id }}</a></td>
                 <td>{{ link.views }}</td>
                 <td>{{ link.created_at }}</td>
             </tr>
