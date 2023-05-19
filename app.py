@@ -3,7 +3,7 @@ from datetime import datetime
 import random
 
 from repo_students import Link, repository
-from flask import Flask, request, render_template, redirect
+from flask import Flask, request, render_template, redirect, url_for
 
 app = Flask(__name__)
 
@@ -26,6 +26,7 @@ def index_endpoint():
         repository.create(link)
         shorten_link = repository.get(hash_id=hash_id)
         total_link.append(shorten_link)
+        return redirect(url_for("track_link_endpoint"))
     return render_template("url.html", shorten_link=shorten_link)
 
 
