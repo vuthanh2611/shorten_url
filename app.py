@@ -18,9 +18,9 @@ total_link = []
 
 @app.route("/", methods={"GET", "POST"})
 def index_endpoint():
-    shorten_link = ''
+    shorten_link = ""
     if request.method == "POST":
-        url_link = request.form.get('link')
+        url_link = request.form.get("link")
         hash_id = generate_hash_id()
         link = Link(url=url_link, hash_id=hash_id, created_at=datetime.utcnow())
         repository.create(link)
