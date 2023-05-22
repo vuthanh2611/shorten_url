@@ -1,7 +1,6 @@
 import string
 from datetime import datetime
 import random
-
 from repo_students import Link, repository
 from flask import Flask, request, render_template, redirect, url_for
 import requests
@@ -17,10 +16,19 @@ def generate_hash_id():
 total_link = []
 
 
+# class InvalidUrl(Exception):
+#     pass
+
+
 def is_valid_url(url):
+    # schema, netloc, *_ = parse.urlparse(url)
+    # if not schema or not netloc:
+    #     return False
+    # else:
+    #     return True
     try:
         response = requests.head(url)
-        return response.status_code == 200
+        return response.ok
     except requests.exceptions.RequestException:
         return False
 
